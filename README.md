@@ -43,7 +43,7 @@ Representing Images Correctly
  
   *A mental image specifies how each node is related to the viewer*
 
-Notes on Mental Rotation
+Mental Rotation
   If we are checking to see if a handwritten R is correctly oriented (see example where R is upside down and rotated slightly), we have a matrix to represent the original, weird R, and a matrix of what an R should look like. We don't get sign(det(A)) of this matrix, as that would be a really heavy thing to compute. Instead, we mentally rotate and transform this image until it is the correct orientation, and then we can easily check if it matches. We use continuous matrix transformations.
 
 Hierarchy of Parts
@@ -53,3 +53,6 @@ Hierarchy of Parts
   
   If we know it is present, I believe we average the predicted positions together to get the result.
   
+Factor Analysis
+  If we were to make images out of five ellipses, like a face or a crude sheep, the shape is determined entirely by the spatial relations between the ellipses because all the parts have the same shape. So we can train a factor analysis model by saying what each ellipse in a face image might represent (left eye ellipse, right eye ellipse, etc), and then get a vector of 30 numbers (presumably 6 for each ellipse) to represent the entire image. We know the relationship between each of these ellipses won't change even if our image does. So we learn a linear model to use just a few numbers for the pose of the whole face to explain the pose of all the parts. 
+  Using this, we can generate new samples from our model via extrapolation, with all sorts of sizes and rotations.
