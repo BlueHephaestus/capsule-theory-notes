@@ -1,6 +1,16 @@
 # capsule-theory-notes
 Notes and resources for my understanding of Geoffrey Hinton's Capsule Theory
 
+TODO
+  Autoencoders
+  Coordinate transforms
+  More backprop knowledge
+  Investigate github
+  torch
+  Steerable filters?
+  Linear dynamical models?
+  Keep doing coursera
+  
 Geoffrey Hinton AMA https://www.reddit.com/r/MachineLearning/comments/2lmo0l/ama_geoffrey_hinton/ and http://www.kdnuggets.com/2014/12/geoffrey-hinton-talks-deep-learning-google-everything.html
 
   Talk on Inverse Graphics - https://www.youtube.com/watch?v=TFIMqt0yT2I and http://cseweb.ucsd.edu/~gary/cs200/s12/Hinton.pdf
