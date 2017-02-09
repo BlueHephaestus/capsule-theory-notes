@@ -37,3 +37,19 @@ Representing Images Correctly
   
   So it's a matrix multiply, much like how we have a transformation matrix to do linear transforms in linear algebra.
   
+  By doing this, our matrices are viewpoint invariant, but the neural activities that represent the positions are highly variant, as they should be.
+  
+  So we want to both know how each part is related to the whole, and how each part is related to the camera. We want the first to be invariant, and the second to be equivariant.
+ 
+  *A mental image specifies how each node is related to the viewer*
+
+Notes on Mental Rotation
+  If we are checking to see if a handwritten R is correctly oriented (see example where R is upside down and rotated slightly), we have a matrix to represent the original, weird R, and a matrix of what an R should look like. We don't get sign(det(A)) of this matrix, as that would be a really heavy thing to compute. Instead, we mentally rotate and transform this image until it is the correct orientation, and then we can easily check if it matches. We use continuous matrix transformations.
+
+Hierarchy of Parts
+  So, if we know the position of a mouth in an image, and we know the position of a nose in an image, we can determine what the position of the face in the image should be using matrix part-to-whole transformations on each of these. We can then get two different ideas of the position of the face, a higher level entity, through the positions of the nose and mouth, lower level entities (through our aforementioned matrix transforms). If these higher level positions are in agreement / are close, then we know the higher level visual entity is present.
+  
+  By doing this, we have knowledge in our weights, and variance through viewpoint in the operations.
+  
+  If we know it is present, I believe we average the predicted positions together to get the result.
+  
